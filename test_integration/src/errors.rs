@@ -48,12 +48,7 @@ pub(crate) fn run_errors_test(
             let result = cornucopi::load_schema(client, &["schema.sql"])
                 .map_err(Error::from)
                 .and_then(|_| {
-                    cornucopi::generate_live(
-                        client,
-                        "queries",
-                        None,
-                        CodegenSettings::from(&*test),
-                    )
+                    cornucopi::generate_live(client, "queries", None, CodegenSettings::from(&*test))
                 });
 
             let err = result.unwrap_err().report();

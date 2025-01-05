@@ -44,9 +44,7 @@ impl CornucopiType {
                 Type::BYTEA | Type::TEXT | Type::VARCHAR | Type::JSON | Type::JSONB => false,
                 _ => !self.is_copy(),
             },
-            CornucopiType::Domain { inner, .. } | CornucopiType::Array { inner } => {
-                inner.is_ref()
-            }
+            CornucopiType::Domain { inner, .. } | CornucopiType::Array { inner } => inner.is_ref(),
             _ => !self.is_copy(),
         }
     }
