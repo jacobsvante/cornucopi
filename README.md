@@ -4,9 +4,9 @@
  <strong>
    Generate type-checked Rust from your SQL
  </strong>
- <strong>
+ <p>
    NOTE: It's been a long time since the original `cornucopi` crates were updated. These are copies of those crates under a new name, where we will focus on keeping sub-dependencies up-to-date.
- </strong>
+ </p>
 </div>
 
 <br />
