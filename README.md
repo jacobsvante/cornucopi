@@ -1,4 +1,4 @@
-<div align="center"> <img src="https://raw.githubusercontent.com/cornucopi-rs/cornucopi/main/assets/logo.svg" width=200 /> </div>
+<div align="center"> <img src="https://raw.githubusercontent.com/jacobsvante/cornucopi/main/assets/logo.svg" width=200 /> </div>
 <h1 align="center">Cornucopi</h1>
 <div align="center">
  <strong>
@@ -34,15 +34,15 @@
   </a>
 
   <!-- Dependencies -->
-  <a href="https://deps.rs/repo/github/cornucopi-rs/cornucopi">
-    <img src="https://deps.rs/repo/github/cornucopi-rs/cornucopi/status.svg?style=flat-square"
+  <a href="https://deps.rs/repo/github/jacobsvante/cornucopi">
+    <img src="https://deps.rs/repo/github/jacobsvante/cornucopi/status.svg?style=flat-square"
     alt="Crates.io version" />
   </a>
 
   <br/>
 
   <!-- License -->
-  <a href="https://github.com/cornucopi-rs/cornucopi#License">
+  <a href="https://github.com/jacobsvante/cornucopi#License">
     <img src="https://img.shields.io/badge/License-APACHE--2.0%2FMIT-blue?style=flat-square" alt="License">
   </a>
 
