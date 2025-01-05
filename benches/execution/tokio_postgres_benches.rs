@@ -7,13 +7,14 @@ use std::fmt::Write;
 use tokio_postgres::Client;
 
 const NO_PARAMS: Vec<&dyn ToSql> = Vec::new();
-
+#[allow(dead_code)]
 pub struct User {
     pub id: i32,
     pub name: String,
     pub hair_color: Option<String>,
 }
 
+#[allow(dead_code)]
 pub struct Post {
     pub id: i32,
     pub user_id: i32,
@@ -21,6 +22,7 @@ pub struct Post {
     pub body: Option<String>,
 }
 
+#[allow(dead_code)]
 pub struct Comment {
     pub id: i32,
     pub post_id: i32,
