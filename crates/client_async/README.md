@@ -1,32 +1,33 @@
-<div align="center"> <img src="https://raw.githubusercontent.com/cornucopia-rs/cornucopia/main/assets/logo.svg" width=200 /> </div>
-<h1 align="center">Cornucopia</h1>
+<div align="center"> <img src="https://raw.githubusercontent.com/cornucopi-rs/cornucopi/main/assets/logo.svg" width=200 /> </div>
+<h1 align="center">Cornucopi</h1>
 <div align="center">
  <strong>
    Generate type-checked Rust from your SQL
  </strong>
-</div>
-
+ <strong>
+   NOTE: It's been a long time since the original `cornucopia` crates were updated. These are copies of those crates under a new name, where we will focus on keeping sub-dependencies up-to-date.
+ </strong>
 <br />
 
 <div align="center">
   <!-- Version -->
-  <a href="https://crates.io/crates/cornucopia_async">
-    <img src="https://img.shields.io/crates/v/cornucopia_async.svg?style=flat-square"
+  <a href="https://crates.io/crates/cornucopi_async">
+    <img src="https://img.shields.io/crates/v/cornucopi_async.svg?style=flat-square"
     alt="Crates.io version" />
   </a>
 
   <!-- Book -->
-  <a href="https://cornucopia-rs.netlify.app/book/index.html">
+  <a href="https://cornucopi-rs.netlify.app/book/index.html">
   <img src="https://img.shields.io/badge/book-latest-blue?logo=mdbook&style=flat-square" alt="book">
   </a>
 
   <!-- Docs -->
-  <a href="https://docs.rs/cornucopia_async/latest/cornucopia_async/">
-    <img alt="docs.rs" src="https://img.shields.io/docsrs/cornucopia_async?style=flat-square">
+  <a href="https://docs.rs/cornucopi_async/latest/cornucopi_async/">
+    <img alt="docs.rs" src="https://img.shields.io/docsrs/cornucopi_async?style=flat-square">
   </a>
 
   <!-- License -->
-  <a href="https://github.com/cornucopia-rs/cornucopia#License">
+  <a href="https://github.com/cornucopi-rs/cornucopi#License">
     <img src="https://img.shields.io/badge/License-APACHE--2.0%2FMIT-blue?style=flat-square" alt="License">
   </a>
 
@@ -38,10 +39,10 @@
 
 ---
 
-**Note:** This crate is the *asynchronous* client. You can find the *synchronous* client [here](https://crates.io/crates/cornucopia_sync).
+**Note:** This crate is the *asynchronous* client. You can find the *synchronous* client [here](https://crates.io/crates/cornucopi_sync).
 
-This is a client crate for [Cornucopia](https://crates.io/crates/cornucopia). This dependency provides
+This is a client crate for [Cornucopi](https://crates.io/crates/cornucopi). This dependency provides
 1. Internals required by the generated code.
-2. Public items that you may find useful when working with Cornucopia (you can find more info about these in the [docs](https://docs.rs/cornucopia_async/latest/cornucopia_async/)).
+2. Public items that you may find useful when working with Cornucopi (you can find more info about these in the [docs](https://docs.rs/cornucopi_async/latest/cornucopi_async/)).
 
-***You need to depend on this crate for Cornucopia's generated code to work properly.***
+***You need to depend on this crate for Cornucopi's generated code to work properly.***
