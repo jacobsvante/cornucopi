@@ -19,8 +19,8 @@ postgres = "0.19.9"
 postgres-types = "0.2.8"
 
 # Error handling and reporting
-thiserror = "2.0.7"
 miette = { version = "5.10.0", features = ["fancy"] }
+thiserror = "2.0.9"
 
 # Parser
 chumsky = "0.9.3"
