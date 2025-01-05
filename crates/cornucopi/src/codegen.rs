@@ -31,8 +31,8 @@ impl GenCtx {
     }
 
     pub fn path(&self, depth: u8, name: impl Display) -> String {
-        let depth = std::iter::repeat("super::").take(depth as usize);
-        code!($($depth)$name)
+        let supers = std::iter::repeat("super::").take(depth as usize).collect::<String>();
+        format!("{}{}", supers, name)
     }
 
     pub fn client_name(&self) -> &'static str {
@@ -536,7 +536,7 @@ fn gen_query_fn<W: Write>(w: &mut W, module: &PreparedModule, query: &PreparedQu
                             $($fields_name: row.get($fields_idx),)
                         })
                     }),
-                    code!(<$path>::from(it)),
+                    format!("<{0}>::from(it)", path),
                 )
             } else {
                 let field = &fields[0];
