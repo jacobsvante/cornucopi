@@ -72,7 +72,7 @@ pub(crate) fn run_errors_test(
                     test.name,
                     "ERR".red(),
                     expected_msg,
-                    test.error,
+                    test.error.trim(),
                     got_msg,
                     err,
                 );

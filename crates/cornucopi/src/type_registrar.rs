@@ -40,8 +40,11 @@ impl CornucopiType {
     /// Is this type need a generic lifetime
     pub fn is_ref(&self) -> bool {
         match self {
-            CornucopiType::Simple { pg_ty: Type::BYTEA | Type::TEXT | Type::VARCHAR | Type::JSON | Type::JSONB, .. } => false,
-            CornucopiType::Simple {..} => !self.is_copy(),
+            CornucopiType::Simple {
+                pg_ty: Type::BYTEA | Type::TEXT | Type::VARCHAR | Type::JSON | Type::JSONB,
+                ..
+            } => false,
+            CornucopiType::Simple { .. } => !self.is_copy(),
             CornucopiType::Domain { inner, .. } | CornucopiType::Array { inner } => inner.is_ref(),
             _ => !self.is_copy(),
         }
@@ -454,7 +457,7 @@ pub(crate) mod error {
         Db(#[from] postgres::Error),
         UnsupportedPostgresType {
             #[source_code]
-            src: NamedSource,
+            src: NamedSource<String>,
             #[label("this query contains an unsupported type (name: {col_name}, type: {col_ty})")]
             query: SourceSpan,
             col_name: String,

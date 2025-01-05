@@ -1,7 +1,4 @@
-use std::{
-    path::{Path, PathBuf},
-    sync::Arc,
-};
+use std::path::{Path, PathBuf};
 
 use miette::NamedSource;
 
@@ -11,16 +8,16 @@ use self::error::Error;
 pub(crate) struct ModuleInfo {
     pub(crate) path: PathBuf,
     pub(crate) name: String,
-    pub(crate) content: Arc<String>,
+    pub(crate) content: String,
 }
 
-impl From<ModuleInfo> for NamedSource {
+impl From<ModuleInfo> for NamedSource<String> {
     fn from(m: ModuleInfo) -> Self {
         Self::new(m.path.to_string_lossy(), m.content)
     }
 }
 
-impl From<&ModuleInfo> for NamedSource {
+impl From<&ModuleInfo> for NamedSource<String> {
     fn from(m: &ModuleInfo) -> Self {
         Self::new(m.path.to_string_lossy(), m.content.clone())
     }
@@ -64,7 +61,7 @@ pub(crate) fn read_query_modules(dir_path: &Path) -> Result<Vec<ModuleInfo>, Err
             modules_info.push(ModuleInfo {
                 path: path_buf,
                 name: module_name,
-                content: Arc::new(file_contents),
+                content: file_contents,
             });
         }
     }
