@@ -7,6 +7,7 @@ use crate::utils::db_err;
 
 use self::error::Error;
 
+#[allow(clippy::result_large_err)]
 /// Loads PostgreSQL schemas into a database.
 ///
 /// Takes a list of file paths as parameter and loads them in their given order.

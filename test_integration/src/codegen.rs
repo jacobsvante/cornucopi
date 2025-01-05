@@ -70,7 +70,7 @@ pub(crate) fn run_codegen_test(
             if test.run {
                 // Change current directory
                 std::env::set_current_dir(&original_pwd)?;
-                std::env::set_current_dir(&format!("../{}", test.base_path))?;
+                std::env::set_current_dir(format!("../{}", test.base_path))?;
                 // Run
                 let result = Command::new("cargo").arg("run").output()?;
                 if result.status.success() {

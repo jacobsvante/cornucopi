@@ -316,6 +316,7 @@ pub(crate) struct TypeRegistrar {
 }
 
 impl TypeRegistrar {
+    #[allow(clippy::result_large_err)]
     pub(crate) fn register(
         &mut self,
         name: &str,

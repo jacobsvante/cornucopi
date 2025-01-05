@@ -38,6 +38,7 @@ pub struct CodegenSettings {
     pub derive_ser: bool,
 }
 
+#[allow(clippy::result_large_err)]
 /// Generates Rust queries from PostgreSQL queries located at `queries_path`,
 /// using a live database managed by you. If some `destination` is given,
 /// the generated code will be written at that path. Code generation settings are
@@ -64,6 +65,7 @@ pub fn generate_live<P: AsRef<Path>>(
     Ok(generated_code)
 }
 
+#[allow(clippy::result_large_err)]
 /// Generates Rust queries from PostgreSQL queries located at `queries_path`, using
 /// a container managed by cornucopi. The database schema is created using `schema_files`.
 /// If some `destination` is given, the generated code will be written at that path.
@@ -97,6 +99,7 @@ pub fn generate_managed<P: AsRef<Path>>(
     Ok(generated_code)
 }
 
+#[allow(clippy::result_large_err)]
 fn write_generated_code(destination: &Path, generated_code: &str) -> Result<(), Error> {
     Ok(
         std::fs::write(destination, generated_code).map_err(|err| WriteOutputError {

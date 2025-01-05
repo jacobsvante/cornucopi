@@ -141,7 +141,7 @@ impl<T: ToSql, I: Iterator<Item = T> + ExactSizeIterator, F: Fn() -> I + Sync> T
 
 // https://github.com/sfackler/rust-postgres/blob/765395f288861209a644c621bf72172acd482515/postgres-types/src/lib.rs
 fn downcast(len: usize) -> Result<i32, Box<dyn std::error::Error + Sync + Send>> {
-    if len > i32::max_value() as usize {
+    if len > i32::MAX as usize {
         Err("value too large to transmit".into())
     } else {
         Ok(len as i32)

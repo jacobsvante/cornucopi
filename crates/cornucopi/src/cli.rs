@@ -45,6 +45,7 @@ enum Action {
 }
 
 // Main entrypoint of the CLI. Parses the args and calls the appropriate routines.
+#[allow(clippy::result_large_err)]
 pub fn run() -> Result<(), Error> {
     let Args {
         podman,

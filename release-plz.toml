@@ -5,6 +5,6 @@ commit_parsers = [
     { message = "^deprecated", group = "deprecated" },
     { message = "^fix", group = "fixed" },
     { message = "^security", group = "security" },
-    { message = "^chore|^build|^ci", skip = true },
+    { message = "^chore|^build|^ci|^style", skip = true },
     { message = "^.*", group = "other" },
 ]

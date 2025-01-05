@@ -151,6 +151,7 @@ pub(crate) struct Preparation {
 }
 
 impl PreparedModule {
+    #[allow(clippy::result_large_err)]
     fn add(
         info: &ModuleInfo,
         map: &mut IndexMap<Span<String>, PreparedItem>,
@@ -183,6 +184,7 @@ impl PreparedModule {
         }
     }
 
+    #[allow(clippy::result_large_err)]
     fn add_row(
         &mut self,
         name: Span<String>,
@@ -197,6 +199,7 @@ impl PreparedModule {
         Self::add(&self.info, &mut self.rows, fuck, fields, is_implicit)
     }
 
+    #[allow(clippy::result_large_err)]
     fn add_param(
         &mut self,
         name: Span<String>,
@@ -225,6 +228,7 @@ impl PreparedModule {
     }
 }
 
+#[allow(clippy::result_large_err)]
 /// Prepares all modules
 pub(crate) fn prepare(client: &mut Client, modules: Vec<Module>) -> Result<Preparation, Error> {
     let mut registrar = TypeRegistrar::default();
@@ -315,6 +319,7 @@ fn prepare_type(
     }
 }
 
+#[allow(clippy::result_large_err)]
 /// Prepares all queries in this module
 fn prepare_module(
     client: &mut Client,
@@ -346,6 +351,7 @@ fn prepare_module(
     Ok(tmp_prepared_module)
 }
 
+#[allow(clippy::result_large_err)]
 /// Prepares a query
 fn prepare_query(
     client: &mut Client,

@@ -31,8 +31,7 @@ impl GenCtx {
     }
 
     pub fn path(&self, depth: u8, name: impl Display) -> String {
-        let supers = std::iter::repeat("super::").take(depth as usize).collect::<String>();
-        format!("{}{}", supers, name)
+        format!("{}{}", "super::".repeat(depth as usize), name)
     }
 
     pub fn client_name(&self) -> &'static str {
