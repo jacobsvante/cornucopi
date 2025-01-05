@@ -1,6 +1,6 @@
 [package]
 name = "cornucopi_async"
-version = "0.7.0"
+version = "0.7.1"
 edition = "2021"
 license = "MIT/Apache-2.0"
 description = "Asynchronous client library for Cornucopi users."
@@ -19,7 +19,7 @@ with-serde_json-1 = ["cornucopi_client_core/with-serde_json-1"]
 
 [dependencies]
 # Path dependencies
-cornucopi_client_core = { path = "../client_core", version = "0.4.0" }
+cornucopi_client_core = { path = "../client_core", version = "0.4.1" }
 
 # async
 async-trait = "0.1.84"
