@@ -18,7 +18,7 @@ impl<'a> From<&'a Type> for SchemaKey<'a> {
     }
 }
 
-impl<'a> Equivalent<(String, String)> for SchemaKey<'a> {
+impl Equivalent<(String, String)> for SchemaKey<'_> {
     fn equivalent(&self, key: &(String, String)) -> bool {
         key.0.as_str().equivalent(&self.schema) && key.1.as_str().equivalent(&self.name)
     }

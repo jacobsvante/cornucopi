@@ -40,10 +40,8 @@ impl CornucopiType {
     /// Is this type need a generic lifetime
     pub fn is_ref(&self) -> bool {
         match self {
-            CornucopiType::Simple { pg_ty, .. } => match *pg_ty {
-                Type::BYTEA | Type::TEXT | Type::VARCHAR | Type::JSON | Type::JSONB => false,
-                _ => !self.is_copy(),
-            },
+            CornucopiType::Simple { pg_ty: Type::BYTEA | Type::TEXT | Type::VARCHAR | Type::JSON | Type::JSONB, .. } => false,
+            CornucopiType::Simple {..} => !self.is_copy(),
             CornucopiType::Domain { inner, .. } | CornucopiType::Array { inner } => inner.is_ref(),
             _ => !self.is_copy(),
         }
