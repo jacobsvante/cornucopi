@@ -5,7 +5,7 @@
    Generate type-checked Rust from your SQL
  </strong>
  <p>
-   NOTE: It's been a long time since the original `cornucopi` crates were updated. These are copies of those crates under a new name, where we will focus on keeping sub-dependencies up-to-date.
+   NOTE: It's been a long time since the original `cornucopia` crates were updated. These are copies of those crates under a new name, where we will focus on keeping sub-dependencies up-to-date.
  </p>
 </div>
 
