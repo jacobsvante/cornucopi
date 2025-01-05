@@ -3,7 +3,7 @@ use std::{
     path::{Path, PathBuf},
 };
 
-use cornucopia::CodegenSettings;
+use cornucopi::CodegenSettings;
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize)]
@@ -68,7 +68,7 @@ fn default_queries_path() -> PathBuf {
 }
 
 fn default_destination_path() -> PathBuf {
-    PathBuf::from("src/cornucopia.rs")
+    PathBuf::from("src/cornucopi.rs")
 }
 
 impl From<&CodegenTest> for CodegenSettings {

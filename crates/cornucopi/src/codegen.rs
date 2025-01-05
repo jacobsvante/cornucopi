@@ -37,9 +37,9 @@ impl GenCtx {
 
     pub fn client_name(&self) -> &'static str {
         if self.is_async {
-            "cornucopia_async"
+            "cornucopi_async"
         } else {
-            "cornucopia_sync"
+            "cornucopi_sync"
         }
     }
 }
@@ -399,7 +399,7 @@ fn gen_row_query(w: &mut impl Write, row: &PreparedItem, ctx: &GenCtx) {
                 "futures::Stream",
                 "",
                 ".into_stream()",
-                "cornucopia_async",
+                "cornucopi_async",
             )
         } else {
             (
@@ -411,7 +411,7 @@ fn gen_row_query(w: &mut impl Write, row: &PreparedItem, ctx: &GenCtx) {
                 "Iterator",
                 ".iterator()",
                 "",
-                "cornucopia_sync",
+                "cornucopi_sync",
             )
         };
 
@@ -488,9 +488,9 @@ fn gen_query_fn<W: Write>(w: &mut W, module: &PreparedModule, query: &PreparedQu
     } = query;
 
     let (client_mut, fn_async, fn_await, backend, client) = if ctx.is_async {
-        ("", "async", ".await", "tokio_postgres", "cornucopia_async")
+        ("", "async", ".await", "tokio_postgres", "cornucopi_async")
     } else {
-        ("mut", "", "", "postgres", "cornucopia_sync")
+        ("mut", "", "", "postgres", "cornucopi_sync")
     };
 
     let struct_name = ident.type_ident();
@@ -749,7 +749,7 @@ fn gen_type_modules<W: Write>(
 }
 
 pub(crate) fn generate(preparation: Preparation, settings: CodegenSettings) -> String {
-    let mut buff = "// This file was generated with `cornucopia`. Do not modify.\n\n".to_string();
+    let mut buff = "// This file was generated with `cornucopi`. Do not modify.\n\n".to_string();
     let w = &mut buff;
     // Generate database type
     gen_type_modules(
@@ -776,7 +776,7 @@ pub(crate) fn generate(preparation: Preparation, settings: CodegenSettings) -> S
                     move |w: &mut String| {
                         let ctx = GenCtx::new(depth, is_async, settings.derive_ser);
                         let import = if is_async {
-                            "use futures::{StreamExt, TryStreamExt};use futures; use cornucopia_async::GenericClient;"
+                            "use futures::{StreamExt, TryStreamExt};use futures; use cornucopi_async::GenericClient;"
                         } else {
                             "use postgres::{fallible_iterator::FallibleIterator,GenericClient};"
                         };

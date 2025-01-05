@@ -11,7 +11,7 @@ mod validation;
 
 /// Helpers to establish connections to database instances.
 pub mod conn;
-/// High-level interfaces to work with Cornucopia's container manager.
+/// High-level interfaces to work with Cornucopi's container manager.
 pub mod container;
 
 use std::path::Path;
@@ -65,7 +65,7 @@ pub fn generate_live<P: AsRef<Path>>(
 }
 
 /// Generates Rust queries from PostgreSQL queries located at `queries_path`, using
-/// a container managed by cornucopia. The database schema is created using `schema_files`.
+/// a container managed by cornucopi. The database schema is created using `schema_files`.
 /// If some `destination` is given, the generated code will be written at that path.
 /// Code generation settings are set using the `settings` parameter.
 ///
@@ -84,7 +84,7 @@ pub fn generate_managed<P: AsRef<Path>>(
         .map(parse_query_module)
         .collect::<Result<_, parser::error::Error>>()?;
     container::setup(podman)?;
-    let mut client = conn::cornucopia_conn()?;
+    let mut client = conn::cornucopi_conn()?;
     load_schema(&mut client, schema_files)?;
     let prepared_modules = prepare(&mut client, modules)?;
     let generated_code = generate_internal(prepared_modules, settings);

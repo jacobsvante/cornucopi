@@ -9,7 +9,7 @@ use crate::{
     codegen::GenCtx,
     parser::{Module, NullableIdent, Query, Span, TypeAnnotation},
     read_queries::ModuleInfo,
-    type_registrar::CornucopiaType,
+    type_registrar::CornucopiType,
     type_registrar::TypeRegistrar,
     utils::KEYWORD,
     validation,
@@ -17,7 +17,7 @@ use crate::{
 
 use self::error::Error;
 
-/// This data structure is used by Cornucopia to generate
+/// This data structure is used by Cornucopi to generate
 /// all constructs related to this particular query.
 #[derive(Debug, Clone)]
 pub(crate) struct PreparedQuery {
@@ -66,7 +66,7 @@ impl Ident {
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct PreparedField {
     pub(crate) ident: Ident,
-    pub(crate) ty: Rc<CornucopiaType>,
+    pub(crate) ty: Rc<CornucopiType>,
     pub(crate) is_nullable: bool,
     pub(crate) is_inner_nullable: bool, // Vec only
 }
@@ -74,7 +74,7 @@ pub struct PreparedField {
 impl PreparedField {
     pub(crate) fn new(
         db_ident: String,
-        ty: Rc<CornucopiaType>,
+        ty: Rc<CornucopiType>,
         nullity: Option<&NullableIdent>,
     ) -> Self {
         Self {
@@ -267,10 +267,10 @@ fn normalize_rust_name(name: &str) -> String {
 fn prepare_type(
     registrar: &TypeRegistrar,
     name: &str,
-    ty: &CornucopiaType,
+    ty: &CornucopiType,
     types: &[TypeAnnotation],
 ) -> Option<PreparedType> {
-    if let CornucopiaType::Custom {
+    if let CornucopiType::Custom {
         pg_ty,
         struct_name,
         is_copy,

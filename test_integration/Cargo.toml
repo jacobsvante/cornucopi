@@ -8,7 +8,7 @@ publish = false
 
 [dependencies]
 # Path dependencies
-cornucopia = { path = "../crates/cornucopia" }
+cornucopi = { path = "../crates/cornucopi" }
 
 # Create temporary projects for error tests.
 tempfile = "3.10.1"

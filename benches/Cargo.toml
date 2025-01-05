@@ -8,9 +8,9 @@ publish = false
 
 [dependencies]
 # Path dependencies
-cornucopia = { path = "../crates/cornucopia" }
-cornucopia_sync = { path = "../crates/client_sync" }
-cornucopia_async = { path = "../crates/client_async" }
+cornucopi = { path = "../crates/cornucopi" }
+cornucopi_sync = { path = "../crates/client_sync" }
+cornucopi_async = { path = "../crates/client_async" }
 
 # benchmarking
 criterion = { version = "0.5.1", features = ["html_reports"] }

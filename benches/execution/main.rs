@@ -1,6 +1,6 @@
 use std::fmt::Write;
 
-use cornucopia::conn::cornucopia_conn;
+use cornucopi::conn::cornucopi_conn;
 use criterion::{BenchmarkId, Criterion};
 use diesel::{Connection, PgConnection};
 use postgres::{fallible_iterator::FallibleIterator, Client, NoTls};
@@ -9,7 +9,7 @@ use tokio::runtime::Runtime;
 const QUERY_SIZE: &[usize] = &[1, 100, 10_000];
 const INSERT_SIZE: &[usize] = &[1, 100, 1000];
 
-mod cornucopia_benches;
+mod cornucopi_benches;
 mod diesel_benches;
 mod postgres_benches;
 mod tokio_postgres_benches;
@@ -126,9 +126,9 @@ fn prepare_full(client: &mut Client) {
 }
 
 fn bench(c: &mut Criterion) {
-    cornucopia::container::cleanup(false).ok();
-    cornucopia::container::setup(false).unwrap();
-    let client = &mut cornucopia_conn().unwrap();
+    cornucopi::container::cleanup(false).ok();
+    cornucopi::container::setup(false).unwrap();
+    let client = &mut cornucopi_conn().unwrap();
     let rt: &'static Runtime = Box::leak(Box::new(Runtime::new().unwrap()));
     let async_client = &mut rt.block_on(async {
         let (client, conn) = tokio_postgres::connect(
@@ -144,7 +144,7 @@ fn bench(c: &mut Criterion) {
         &mut PgConnection::establish("postgresql://postgres:postgres@127.0.0.1:5435/postgres")
             .unwrap();
 
-    cornucopia::load_schema(client, &["usage/cornucopia_benches/schema.sql"]).unwrap();
+    cornucopi::load_schema(client, &["usage/cornucopi_benches/schema.sql"]).unwrap();
     {
         let mut group = c.benchmark_group("bench_trivial_query");
         for size in QUERY_SIZE {
@@ -158,11 +158,11 @@ fn bench(c: &mut Criterion) {
             group.bench_function(BenchmarkId::new("tokio_postgres", size), |b| {
                 tokio_postgres_benches::bench_trivial_query(b, async_client);
             });
-            group.bench_function(BenchmarkId::new("cornucopia", size), |b| {
-                cornucopia_benches::sync::bench_trivial_query(b, client);
+            group.bench_function(BenchmarkId::new("cornucopi", size), |b| {
+                cornucopi_benches::sync::bench_trivial_query(b, client);
             });
-            group.bench_function(BenchmarkId::new("cornucopia_async", size), |b| {
-                cornucopia_benches::bench_trivial_query(b, async_client);
+            group.bench_function(BenchmarkId::new("cornucopi_async", size), |b| {
+                cornucopi_benches::bench_trivial_query(b, async_client);
             });
         }
         group.finish();
@@ -182,11 +182,11 @@ fn bench(c: &mut Criterion) {
             group.bench_function(BenchmarkId::new("tokio_postgres", size), |b| {
                 tokio_postgres_benches::bench_medium_complex_query(b, async_client);
             });
-            group.bench_function(BenchmarkId::new("cornucopia", size), |b| {
-                cornucopia_benches::sync::bench_medium_complex_query(b, client);
+            group.bench_function(BenchmarkId::new("cornucopi", size), |b| {
+                cornucopi_benches::sync::bench_medium_complex_query(b, client);
             });
-            group.bench_function(BenchmarkId::new("cornucopia_async", size), |b| {
-                cornucopia_benches::bench_medium_complex_query(b, async_client);
+            group.bench_function(BenchmarkId::new("cornucopi_async", size), |b| {
+                cornucopi_benches::bench_medium_complex_query(b, async_client);
             });
         }
         group.finish();
@@ -203,11 +203,11 @@ fn bench(c: &mut Criterion) {
         group.bench_function("tokio_postgres", |b| {
             tokio_postgres_benches::loading_associations_sequentially(b, async_client);
         });
-        group.bench_function("cornucopia", |b| {
-            cornucopia_benches::sync::loading_associations_sequentially(b, client)
+        group.bench_function("cornucopi", |b| {
+            cornucopi_benches::sync::loading_associations_sequentially(b, client)
         });
-        group.bench_function("cornucopia_async", |b| {
-            cornucopia_benches::loading_associations_sequentially(b, async_client)
+        group.bench_function("cornucopi_async", |b| {
+            cornucopi_benches::loading_associations_sequentially(b, async_client)
         });
         group.finish();
     }
@@ -225,19 +225,19 @@ fn bench(c: &mut Criterion) {
             group.bench_with_input(BenchmarkId::new("tokio_postgres", size), size, |b, i| {
                 tokio_postgres_benches::bench_insert(b, async_client, *i);
             });
-            group.bench_with_input(BenchmarkId::new("cornucopia", size), size, |b, i| {
+            group.bench_with_input(BenchmarkId::new("cornucopi", size), size, |b, i| {
                 clear(client);
-                cornucopia_benches::sync::bench_insert(b, client, *i);
+                cornucopi_benches::sync::bench_insert(b, client, *i);
             });
-            group.bench_with_input(BenchmarkId::new("cornucopia_async", size), size, |b, i| {
+            group.bench_with_input(BenchmarkId::new("cornucopi_async", size), size, |b, i| {
                 clear(client);
-                cornucopia_benches::bench_insert(b, async_client, *i);
+                cornucopi_benches::bench_insert(b, async_client, *i);
             });
         }
         group.finish();
     }
 
-    cornucopia::container::cleanup(false).unwrap();
+    cornucopi::container::cleanup(false).unwrap();
 }
 criterion::criterion_group!(benches, bench);
 criterion::criterion_main!(benches);

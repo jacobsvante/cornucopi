@@ -1,6 +1,6 @@
-mod cornucopia;
+mod cornucopi;
 
-use ::cornucopia_sync::IterSql;
+use ::cornucopi_sync::IterSql;
 
 use eui48::MacAddress;
 use postgres::{Client, Config, NoTls};
@@ -14,7 +14,7 @@ use std::{
 use time::{OffsetDateTime, PrimitiveDateTime};
 use uuid::Uuid;
 
-use crate::cornucopia::{
+use crate::cornucopi::{
     queries::{
         copy::sync::{insert_clone, insert_copy, select_copy},
         domain::{
@@ -55,7 +55,7 @@ use crate::cornucopia::{
         SyntaxComposite, SyntaxEnum,
     },
 };
-use cornucopia_sync::Params;
+use cornucopi_sync::Params;
 
 pub fn main() {
     let client = &mut Config::new()

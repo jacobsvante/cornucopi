@@ -7,10 +7,10 @@ publish = false
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-# Cornucopia async client
+# Cornucopi async client
 ## If you're trying this example as a standalone crate,
 ## replace the path with the latest current version
-cornucopia_async = { path = "../../crates/client_async" }
+cornucopi_async = { path = "../../crates/client_async" }
 
 # Async
 tokio = { version = "1.38.0", features = ["full"] }
@@ -23,7 +23,7 @@ postgres-types = "0.2.6"
 deadpool-postgres = "0.14.0"
 
 [build-dependencies]
-# Cornucopia library to automatically
+# Cornucopi library to automatically
 ## If you're trying this example as a standalone crate,
 ## replace the path with the latest current version
-cornucopia = { path = "../../crates/cornucopia" }
+cornucopi = { path = "../../crates/cornucopi" }

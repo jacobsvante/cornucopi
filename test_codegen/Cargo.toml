@@ -8,10 +8,10 @@ publish = false
 
 [dependencies]
 # Path dependencies
-cornucopia_sync = { path = "../crates/client_sync", features = [
+cornucopi_sync = { path = "../crates/client_sync", features = [
     "with-serde_json-1",
 ] }
-cornucopia_async = { path = "../crates/client_async", features = [
+cornucopi_async = { path = "../crates/client_async", features = [
     "with-serde_json-1",
 ] }
 

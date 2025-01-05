@@ -2,7 +2,7 @@ use std::process::{Command, Stdio};
 
 use self::error::Error;
 
-/// Starts Cornucopia's database container and wait until it reports healthy.
+/// Starts Cornucopi's database container and wait until it reports healthy.
 pub fn setup(podman: bool) -> Result<(), Error> {
     spawn_container(podman)?;
     healthcheck(podman, 120, 50)?;
@@ -16,7 +16,7 @@ pub fn cleanup(podman: bool) -> Result<(), Error> {
     Ok(())
 }
 
-/// Starts Cornucopia's database container.
+/// Starts Cornucopi's database container.
 fn spawn_container(podman: bool) -> Result<(), Error> {
     cmd(
         podman,
@@ -24,7 +24,7 @@ fn spawn_container(podman: bool) -> Result<(), Error> {
             "run",
             "-d",
             "--name",
-            "cornucopia_postgres",
+            "cornucopi_postgres",
             "-p",
             "5435:5432",
             "-e",
@@ -35,11 +35,11 @@ fn spawn_container(podman: bool) -> Result<(), Error> {
     )
 }
 
-/// Checks if Cornucopia's container reports healthy
+/// Checks if Cornucopi's container reports healthy
 fn is_postgres_healthy(podman: bool) -> Result<bool, Error> {
     Ok(cmd(
         podman,
-        &["exec", "cornucopia_postgres", "pg_isready"],
+        &["exec", "cornucopi_postgres", "pg_isready"],
         "check container health",
     )
     .is_ok())
@@ -52,7 +52,7 @@ fn healthcheck(podman: bool, max_retries: u64, ms_per_retry: u64) -> Result<(), 
     while !is_postgres_healthy(podman)? {
         if nb_retries >= max_retries {
             return Err(Error::new(
-                String::from("Cornucopia reached the max number of connection retries"),
+                String::from("Cornucopi reached the max number of connection retries"),
                 podman,
             ));
         };
@@ -68,16 +68,16 @@ fn healthcheck(podman: bool, max_retries: u64, ms_per_retry: u64) -> Result<(), 
     Ok(())
 }
 
-/// Stops Cornucopia's container.
+/// Stops Cornucopi's container.
 fn stop_container(podman: bool) -> Result<(), Error> {
-    cmd(podman, &["stop", "cornucopia_postgres"], "stop container")
+    cmd(podman, &["stop", "cornucopi_postgres"], "stop container")
 }
 
-/// Removes Cornucopia's container and its volume.
+/// Removes Cornucopi's container and its volume.
 fn remove_container(podman: bool) -> Result<(), Error> {
     cmd(
         podman,
-        &["rm", "-v", "cornucopia_postgres"],
+        &["rm", "-v", "cornucopi_postgres"],
         "remove container",
     )
 }
@@ -118,9 +118,9 @@ pub(crate) mod error {
     impl Error {
         pub fn new(msg: String, podman: bool) -> Self {
             let help = if podman {
-                "Make sure that port 5435 is usable and that no container named `cornucopia_postgres` already exists."
+                "Make sure that port 5435 is usable and that no container named `cornucopi_postgres` already exists."
             } else {
-                "First, check that the docker daemon is up-and-running. Then, make sure that port 5435 is usable and that no container named `cornucopia_postgres` already exists."
+                "First, check that the docker daemon is up-and-running. Then, make sure that port 5435 is usable and that no container named `cornucopi_postgres` already exists."
             };
             Error {
                 msg,

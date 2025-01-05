@@ -2,7 +2,7 @@ use std::{fmt::Display, process::ExitCode};
 
 use crate::{codegen::run_codegen_test, errors::run_errors_test};
 use clap::Parser;
-use cornucopia::container;
+use cornucopi::container;
 
 mod codegen;
 mod errors;
@@ -44,7 +44,7 @@ fn test(
     container::cleanup(podman).ok();
     container::setup(podman).unwrap();
     let successful = std::panic::catch_unwind(|| {
-        let mut client = cornucopia::conn::cornucopia_conn().unwrap();
+        let mut client = cornucopi::conn::cornucopi_conn().unwrap();
         display(run_errors_test(&mut client, apply_errors)).unwrap()
             && display(run_codegen_test(&mut client, apply_codegen)).unwrap()
     });

@@ -131,8 +131,8 @@ dependencies = [
 name = "auto-build"
 version = "0.1.0"
 dependencies = [
- "cornucopia",
- "cornucopia_async",
+ "cornucopi",
+ "cornucopi_async",
  "deadpool-postgres",
  "futures",
  "postgres-types",
@@ -180,7 +180,7 @@ checksum = "72b3254f16251a8381aa12e40e3c4d2f0199f8c6508fbecb9d91f575e0fbb8c6"
 name = "basic-async"
 version = "0.1.0"
 dependencies = [
- "cornucopia_async",
+ "cornucopi_async",
  "deadpool-postgres",
  "futures",
  "postgres-types",
@@ -192,7 +192,7 @@ dependencies = [
 name = "basic_sync"
 version = "0.1.0"
 dependencies = [
- "cornucopia_sync",
+ "cornucopi_sync",
  "postgres",
  "postgres-types",
 ]
@@ -201,9 +201,9 @@ dependencies = [
 name = "benches"
 version = "0.1.0"
 dependencies = [
- "cornucopia",
- "cornucopia_async",
- "cornucopia_sync",
+ "cornucopi",
+ "cornucopi_async",
+ "cornucopi_sync",
  "criterion",
  "diesel",
  "futures",
@@ -422,7 +422,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5b63caa9aa9397e2d9480a9b13673856c78d8ac123288526c37d7839f2a86990"
 
 [[package]]
-name = "cornucopia"
+name = "cornucopi"
 version = "0.9.0"
 dependencies = [
  "chumsky",
@@ -437,17 +437,17 @@ dependencies = [
 ]
 
 [[package]]
-name = "cornucopia_async"
+name = "cornucopi_async"
 version = "0.7.0"
 dependencies = [
  "async-trait",
- "cornucopia_client_core",
+ "cornucopi_client_core",
  "deadpool-postgres",
  "tokio-postgres",
 ]
 
 [[package]]
-name = "cornucopia_client_core"
+name = "cornucopi_client_core"
 version = "0.4.0"
 dependencies = [
  "fallible-iterator",
@@ -458,10 +458,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "cornucopia_sync"
+name = "cornucopi_sync"
 version = "0.4.0"
 dependencies = [
- "cornucopia_client_core",
+ "cornucopi_client_core",
  "postgres",
 ]
 
@@ -1803,8 +1803,8 @@ dependencies = [
 name = "test_codegen"
 version = "0.1.0"
 dependencies = [
- "cornucopia_async",
- "cornucopia_sync",
+ "cornucopi_async",
+ "cornucopi_sync",
  "eui48",
  "futures",
  "postgres",
@@ -1822,7 +1822,7 @@ name = "test_integration"
 version = "0.1.0"
 dependencies = [
  "clap",
- "cornucopia",
+ "cornucopi",
  "owo-colors 4.1.0",
  "postgres",
  "serde",

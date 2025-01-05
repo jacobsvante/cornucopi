@@ -1,4 +1,4 @@
-use cornucopia::{CodegenSettings, Error};
+use cornucopi::{CodegenSettings, Error};
 use owo_colors::OwoColorize;
 
 use crate::{
@@ -45,10 +45,10 @@ pub(crate) fn run_errors_test(
             )?;
 
             // Run codegen
-            let result = cornucopia::load_schema(client, &["schema.sql"])
+            let result = cornucopi::load_schema(client, &["schema.sql"])
                 .map_err(Error::from)
                 .and_then(|_| {
-                    cornucopia::generate_live(
+                    cornucopi::generate_live(
                         client,
                         "queries",
                         None,

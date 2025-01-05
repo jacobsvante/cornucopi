@@ -1,5 +1,5 @@
 [package]
-name = "cornucopia_sync"
+name = "cornucopi_sync"
 version = "0.4.0"
 edition = "2021"
 license = "MIT/Apache-2.0"
@@ -13,11 +13,11 @@ keywords = ["postgresql", "query", "generator", "sql", "tokio-postgres"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [features]
-with-serde_json-1 = ["cornucopia_client_core/with-serde_json-1"]
+with-serde_json-1 = ["cornucopi_client_core/with-serde_json-1"]
 
 [dependencies]
 # Path dependencies
-cornucopia_client_core = { path = "../client_core", version = "0.4.0" }
+cornucopi_client_core = { path = "../client_core", version = "0.4.0" }
 
 # postgres interaction
 postgres = "0.19.9"

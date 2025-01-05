@@ -1,4 +1,4 @@
-// This file was generated with `cornucopia`. Do not modify.
+// This file was generated with `cornucopi`. Do not modify.
 
 #[allow(clippy::all, clippy::pedantic)]
 #[allow(unused_variables)]
@@ -11,13 +11,13 @@ pub mod types {}
 #[allow(dead_code)]
 pub mod queries {
     pub mod module_1 {
-        use cornucopia_async::GenericClient;
+        use cornucopi_async::GenericClient;
         use futures;
         use futures::{StreamExt, TryStreamExt};
         pub struct StringQuery<'a, C: GenericClient, T, const N: usize> {
             client: &'a C,
             params: [&'a (dyn postgres_types::ToSql + Sync); N],
-            stmt: &'a mut cornucopia_async::private::Stmt,
+            stmt: &'a mut cornucopi_async::private::Stmt,
             extractor: fn(&tokio_postgres::Row) -> &str,
             mapper: fn(&str) -> T,
         }
@@ -59,7 +59,7 @@ pub mod queries {
                 let stmt = self.stmt.prepare(self.client).await?;
                 let it = self
                     .client
-                    .query_raw(stmt, cornucopia_async::private::slice_iter(&self.params))
+                    .query_raw(stmt, cornucopi_async::private::slice_iter(&self.params))
                     .await?
                     .map(move |res| res.map(|row| (self.mapper)((self.extractor)(&row))))
                     .into_stream();
@@ -67,14 +67,14 @@ pub mod queries {
             }
         }
         pub fn example_query() -> ExampleQueryStmt {
-            ExampleQueryStmt(cornucopia_async::private::Stmt::new(
+            ExampleQueryStmt(cornucopi_async::private::Stmt::new(
                 "SELECT
     *
 FROM
     example_table",
             ))
         }
-        pub struct ExampleQueryStmt(cornucopia_async::private::Stmt);
+        pub struct ExampleQueryStmt(cornucopi_async::private::Stmt);
         impl ExampleQueryStmt {
             pub fn bind<'a, C: GenericClient>(
                 &'a mut self,

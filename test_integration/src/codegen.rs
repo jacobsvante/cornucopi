@@ -3,7 +3,7 @@ use crate::{
     utils::{reset_db, rustfmt_file, rustfmt_string},
 };
 
-use cornucopia::{CodegenSettings, Error};
+use cornucopi::{CodegenSettings, Error};
 use owo_colors::OwoColorize;
 use std::{env::set_current_dir, process::Command};
 
@@ -27,13 +27,13 @@ pub(crate) fn run_codegen_test(
             set_current_dir(format!("../{}", test.base_path))?;
 
             // Load schema
-            cornucopia::load_schema(client, &["schema.sql"])?;
+            cornucopi::load_schema(client, &["schema.sql"])?;
 
             // If `--apply`, then the code will be regenerated.
             // Otherwise, it is only checked.
             if apply {
                 // Generate
-                cornucopia::generate_live(
+                cornucopi::generate_live(
                     client,
                     &test.queries_path,
                     Some(&test.destination),
@@ -46,7 +46,7 @@ pub(crate) fn run_codegen_test(
                 // Get currently checked-in generate file
                 let old_codegen = std::fs::read_to_string(&test.destination).unwrap();
                 // Generate new file
-                let new_codegen = cornucopia::generate_live(
+                let new_codegen = cornucopi::generate_live(
                     client,
                     &test.queries_path,
                     None,
