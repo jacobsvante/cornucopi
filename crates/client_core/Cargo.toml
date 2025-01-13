@@ -1,6 +1,6 @@
 [package]
 name = "cornucopi_client_core"
-version = "0.4.1"
+version = "0.4.2"
 edition = "2021"
 license = "MIT/Apache-2.0"
 description = "Private abstractions for Cornucopi clients."
