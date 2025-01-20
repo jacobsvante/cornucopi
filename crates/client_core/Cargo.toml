@@ -24,6 +24,6 @@ postgres = "0.19.9"
 # json
 ## This crate implements the "ergonomic paramters" for
 ## `serde_json::Value` and `serde_json::raw::RawValue`.
-serde_json = { version = "1.0.135", optional = true }
+serde_json = { version = "1.0.137", optional = true }
 ## Used for `postgres_types::Json` `Serialize` trait bounds
 serde = { version = "1.0.217", optional = true }
